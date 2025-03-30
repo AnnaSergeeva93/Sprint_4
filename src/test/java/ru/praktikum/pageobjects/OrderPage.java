@@ -20,7 +20,7 @@ public class OrderPage {
     private By сookieBannerButton = By.className("App_CookieButton__3cvqF");
 
     // Локатор кнопки "Заказать" в шапке страницы
-    private By upOrderButton = By.xpath(".//div/div[1]/div[1]/div[2]/button[1]");
+    private By upOrderButton = By.xpath(".//button[@class='Button_Button__ra12g']");
 
     // Локатор кнопки "Заказать" внизу страницы
     private By downOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");

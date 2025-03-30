@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import ru.praktikum.pageobjects.MainPage;
 import ru.praktikum.pageobjects.OrderPage;
 import static org.junit.Assert.assertTrue;
@@ -41,8 +42,8 @@ public class OrderTest {
         this.comment = comment;
     }
 
-    @Parameterized.Parameters
-    public static Object[][] getDateSetForOrder() {
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} {2} {3} {4} {5} {6} {7} {8}")
+    public static Object[][] getDataSetForOrder() {
         return new Object[][]{
                 {"Александр", "Романов", "г.Москва, улица Мусы Джалиля, дом 2", 7, "89756432109", "01.04.2025", "сутки", "чёрный", "Заранее позвоните по номеру телефона"},
                 {"Анна", "Иванова", "улица Кирова, дом 9", 25, "+79876543210", "12.12.2025", "трое суток", "серый", "Привет"},
@@ -52,7 +53,9 @@ public class OrderTest {
     @Before
     public void StartUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
